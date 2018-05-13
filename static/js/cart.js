@@ -1,4 +1,13 @@
-$(document).ready(function () {
+/*
+
+jquery#1
+    $(document).ready()  #1-1
+    $().htm() #1-2
+    $(this)
+
+*/
+
+$(document).ready(function () { //#1-1
     var cartlen = $.cookie('cartlen');
     if (cartlen == 0) {
         cart = [];
@@ -9,7 +18,7 @@ $(document).ready(function () {
         for (var i in cart) {
             st = st + '<tr alt="' + cart[i]['id'] + '"><td colspan="1" class="goods text-center"><label>' + cart[i]['name'] + '</label></td><td colspan="2" class="ext-center"><img src="static/images/goods/' + cart[i]['id'] + '.jpg" height="50" width="50"/></td><td class="selling-price number small-bold-red text-right"style="padding-top: 1.1rem;" data-bind="' + cart[i]['price'] + '">' + cart[i]['price'] + '</td><td><div class="input-group input-group-sm"> <span class="input-group-addon minus">-</span> <input type="text" class="number form-control input-sm" value="' + cart[i]['num'] + '" /><span class="input-group-addon plus">+</span></div></td><td class="subtotal number small-bold-red text-right" style="padding-top: 1.1rem;"></td><td class="action" style="padding-top: 1.1rem;"><span class="delete btn btn-xs btn-warning">删除</span></td></tr>'
         }
-        $('#cartTable tbody').html(st)
+        $('#cartTable tbody').html(st) //#1-2
 
 
 

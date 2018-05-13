@@ -1,4 +1,11 @@
 ﻿
+<!-- 
+input 1 
+    type 1-1 
+    submit 1-2 
+    name 1-3
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,12 +26,12 @@
 		<div class="header" >
 			<h1>Login or Create a Free Account!</h1>
 		</div>
-		<p>Lorem iopsum dolor sit amit,consetetur sadipscing eliter,sed diam voluptua.At vero  eso et accusam et justo duo dolores et ea rebum. </p>
-        <form id="reg_form" method="post" action="reg" onsubmit="return reg()">
+		<p></p>
+        <form id="reg_form" method="post" action="/reg" >
             <ul class="left-form">
                 <h2>New Account:</h2>
                 <li>
-                    <input type="text" placeholder="用户名" id="account" name="account" required />
+                    <input type="text" placeholder="用户名" id="account" name="account" required /> <!--1-1-->
                     <div class="clear"> </div>
                 </li>
                 <li>
@@ -36,18 +43,18 @@
                     <div class="clear"> </div>
                 </li>
                 <li>
-                    <input type="text" placeholder="地址" id="addr" required />
+                    <input type="text" placeholder="输入地址" id="addr" name = "addr" required />
                     <div class="clear"> </div>
                 </li>
                 <li>
-                    <input type="text" placeholder="电话" id="phone" required />
+                    <input type="text" placeholder="输入电话联系方式" id="tel" name="tel" required />
                     <div class="clear"> </div>
                 </li>
                 <input type="submit" value="Create Account">
                 <div class="clear"> </div>
             </ul>
         </form>
-        <form id="login_form" method="post" action="login" onsubmit="return login()">
+        <form id="login_form" method="post" action="/login" >
             <ul class="right-form">
                 <h3>Login:</h3>
                 <li><input type="text" placeholder="用户名" id="account" name="account" required /></li>
@@ -55,18 +62,12 @@
                 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Remember me</label>
                 <input type="submit" value="Login" />
                 <div class="clear"> </div>
-
             </ul>
             <div class="clear"> </div>
 
         </form>
 			
 		</div>
-			<!-----start-copyright---->
-   					<div class="copy-right">
-						<p>Template 2014. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p> 
-					</div>
-				<!-----//end-copyright---->
 
 	
 </body>

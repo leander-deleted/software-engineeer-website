@@ -1,4 +1,11 @@
-﻿$(document).ready(function () {
+﻿/*
+
+
+
+*/
+
+
+$(document).ready(function () {
 
     //首页信息
     

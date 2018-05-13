@@ -1,8 +1,17 @@
-﻿<!DOCTYPE html>
+﻿<!-- template  1
+        set 1-1   
+
+        <del> 2
+
+        role attribute 3
+
+        -->
+
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8" />
-    <title>坑死你购物网</title>
+    <title>电子商务网站</title>
     <!-- ALL STYLESHEET -->
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/font-awesome.min.css" rel="stylesheet">
@@ -28,10 +37,9 @@
                     </div>
                     <div class="col-sm-5">
                         <ul class="list-inline pull-right">
-                            <li><a href="home" id="user"><i class="fa fa-user"></i> My Account</a></li>
-                            <li><a href="cart" id="cart"><i class="fa fa-heart-o"></i> Wishlist (0)</a></li>
-                            <li><a class="register" href="login">Register</a></li>
-                            <li><a class="register" href="login">Login</a></li>
+                            <li><a href="home" id="user"><i class="fa fa-user"></i> 我的账户</a></li>
+                            <li><a href="cart" id="cart"><i class="fa fa-heart-o"></i> 购物车</a></li>
+                            <li><a class="register" href="login">欢迎回来：用户{{username}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,12 +52,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="logo"><i class="fa fa-diamond"></i>E - Market</div>
+                        <div class="logo"><i class="fa fa-diamond"></i>电子产品的网站</div>
                     </div>
                     <div class="col-sm-8">
                         <h3 class="add bb-year-end-ribbon hidden-xs">
                             <img src="images/red-tablet.png" width="40px;" alt="" />
-                            <span>Hi! We Can <span>Help</span> Your Business</span> <button class="btn btn-default"> Get Stared </button>
+                            <span>如果有 <span>合作事情</span> </span> <button class="btn btn-default"> 联系管理员</button>
                         </h3>
                     </div>
                 </div>
@@ -75,15 +83,15 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="header-bottom">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="/list?type=笔记本电脑">笔记本电脑</a></li>
-                                    <li><a href="/list?type=手机">手机</a></li>
-                                    <li><a href="/list?type=数码相机">数码相机</a></li>
-                                    <li><a href="/list?type=耳机">耳机</a></li>
-                                    <li><a href="/list?type=键盘">键盘</a></li>
-                                    <li><a href="/list?type=鼠标">鼠标</a> </li>
-                                    <li><a href="/list?type=显卡">显卡</a></li>
+                                    <li><a href="/list?type=A">电脑</a></li>
+                                    <li><a href="/list?type=B">鼠标</a></li>
+                                    <li><a href="/list?type=C">数字相机</a></li>
+                                    <li><a href="/list?type=D">耳机</a></li>
+                                    <li><a href="/list?type=E">键盘</a></li>
+                                    <li><a href="/list?type=F">手机</a> </li>
+                                    <li><a href="/list?type=G">显卡</a></li>
                                 </ul>
-                                <form class="navbar-form navbar-right" role="search" method="get">
+                                <form class="navbar-form navbar-right" role="search" method="get" action="/search">
                                     <div class="form-group">
                                         <input type="text" name="word" class="form-control" placeholder="Search...">
                                         <span class="nav-search"><a href="search"><i class="fa fa-search"></i></a></span>
@@ -106,8 +114,8 @@
                 </div>
                 <div class="col-sm-8">
                     <ol class="breadcrumb hidden-xs pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="/">Home</a></li>
+                        <!-- <li><a href="#">Shop</a></li> -->
                         <li class="active"><a href="#">Products</a></li>
                     </ol>
                 </div>
@@ -125,24 +133,15 @@
 
 
                         <div class="list-group">
-                            <a href="/list?type=笔记本电脑" class="list-group-item">笔记本电脑</a>
-                            <a href="/list?type=手机" class="list-group-item">手机</a>
-                            <a href="/list?type=数码相机" class="list-group-item">数码相机</a>
-                            <a href="/list?type=耳机" class="list-group-item">耳机</a>
-                            <a href="/list?type=键盘" class="list-group-item">键盘</a>
-                            <a href="/list?type=鼠标" class="list-group-item">鼠标</a> 
-                            <a href="/list?type=显卡" class="list-group-item">显卡</a>
+                            <a href="/list?type=A" class="list-group-item">笔记本电脑</a>
+                            <a href="/list?type=B" class="list-group-item">鼠标</a>
+                            <a href="/list?type=C" class="list-group-item">数码相机</a>
+                            <a href="/list?type=D" class="list-group-item">耳机</a>
+                            <a href="/list?type=E" class="list-group-item">键盘</a>
+                            <a href="/list?type=F" class="list-group-item">手机</a> 
+                            <a href="/list?type=G" class="list-group-item">显卡</a>
                         </div>
 
-
-
-
-                        
-                        
-
-                        
-
-                        
                         
                     </div> <!-- sidebar -->
                 </div>
@@ -169,9 +168,9 @@
 
                                     </div>
                                 </div>
-                                {%set a = 0%}
+                                {%set a = 0%} <!--  1 -->
                                 {% if length == 0 %}
-                                    meiyou
+                                    暂时没有库存商品
                                 {% else %}
                                 {% for id in data %}
                                 {%if a == 2%}
@@ -189,7 +188,7 @@
                                                 <h3 id ="name">{{data[id][0]}}</h3>
                                                 <strong price="{{data[id][1] * (100-data[id][2])/100}}">￥{{data[id][1] * (100-data[id][2])/100}}</strong>
                                                 {% if data[id][2] != 0 %}<del>￥{{data[id][1]}}</del>{% end %}
-                                                <div><a onclick="add('{{id}}');alert('已添加进购物车')" class="btn btn-default" role="button">Add to Cart</a><span class="pull-right"><i class="fa fa-heart-o"></i> Add to Wishlist</span></div>
+                                                <div><a onclick="add('{{id}}');alert({{id}},'已添加进购物车')" class="btn btn-default" role="button">Add to Cart</a><span class="pull-right"><i class="fa fa-heart-o"></i> Add to Wishlist</span></div>
                                         </div>
                                     </div>
                                 {%if a == 2 %}
