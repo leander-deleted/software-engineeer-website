@@ -1,10 +1,5 @@
 ﻿/*
 
-parseInt() 1
-
-string.substring() 2
-
-object.length 3
 
 */
 

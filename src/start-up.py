@@ -1,13 +1,5 @@
 # -*- coding:utf8 -*-
 '''
-tornado.web Application 1
-    handler
-
-tornado.escape.json_decode() 2
-
-urllib 3
-    urllib.unquote_plus()
-
 
 '''
 

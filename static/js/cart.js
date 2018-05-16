@@ -1,21 +1,5 @@
 /*
 
-jquery#1
-    $(document).ready()  #1-1
-    $().html() #1-2
-    $(this)
-    $.cookie() 1-4
-    find() 1-5
-    val() 1-6
-    text()1-7
-    attr() 1-8
-    $.post() 1-9
-    $.ajax()1-10
-
-location.href 2
-
-array 3
-    push
 */
 
 $(document).ready(function () { //#1-1
