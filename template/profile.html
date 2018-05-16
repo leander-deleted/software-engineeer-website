@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
-    <title>坑死你购物网</title>
+    <title>电子商务网站</title>
     <!-- ALL STYLESHEET -->
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/font-awesome.min.css" rel="stylesheet">
@@ -29,10 +29,12 @@
                     </div>
                     <div class="col-sm-5">
                         <ul class="list-inline pull-right">
-                            <li><a href="/home" id="user"><i class="fa fa-user"></i> My Account</a></li>
-                            <li><a href="/cart" id="cart"><i class="fa fa-heart-o"></i> Wishlist (0)</a></li>
-                            <li><a class="/register" href="login">Register</a></li>
-                            <li><a class="/register" href="login">Login</a></li>
+                            <li><a href="/list" id="user"><i class="fa fa-user"></i> 账号</a></li>
+                            <li><a href="/list" id="cart"><i class="fa fa-heart-o"></i> 购物车</a></li>
+<!--                             <li><a class="/register" href="login">Register</a></li>
+                            <li><a class="/register" href="login">Login</a></li> -->
+                            <li><a class="/" href="login">欢迎回来: 用户{{username}}</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -54,7 +56,7 @@
                 <div class="row">
                     <div class="zp_nrm_r">
                         <h1>用户信息</h1>
-                        <p><em>用户名:</em><i>{{account}}</i></p>
+                        <p><em>用户名:</em><i>{{username}}</i></p>
                         <p><em>住址:</em><i>{{addr}}</i></p>
                         <p><em>电话:</em><i>{{tel}}</i></p>
                     </div>
@@ -76,7 +78,7 @@
                                 {%if length != 0%}
                                 {%for i in data%}
                                 <tr>
-                                    <td>{{i['oid']}}</td>
+                                    <td>000000000000{{i['oid']}}</td>
                                     <td>{{i['name']}}</td>
                                     <td>{{i['num']}}</td>
                                     <td>￥{{i['sum']}}</td>

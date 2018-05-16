@@ -184,23 +184,32 @@ def Home_Userinfo_function(user_id):
 def Home_Orderinfo_function(user_id):
     user_id = int(user_id)
     order_dict = {}
-    data_dict = {}
+    data_arr = []
     return_dict = {}
     sqlstr = "SELECT id, user_id, good_id, goods_name, goods_num,  sum, deal_time, pay FROM order_table  WHERE user_id = %d" %user_id
     count = cur.execute(sqlstr)
     result = cur.fetchall()
     for item in result:
+        # userid
         order_dict['uid'] = str(item["user_id"])
-        order_dict['id'] = "%03d"%int(item["good_id"])
+        # order id 
+        order_dict['oid'] = item["id"]
+        print("order_id",order_dict['oid'] )
+        # goods name
         order_dict['name'] = str(item["goods_name"])
+        # goods number
         order_dict['num'] = str(item["goods_num"])
+        # goods sum
         order_dict['sum'] = int(item["sum"])
-        order_dict['deal_time'] = str(item["deal_time"])
+        # deal time
+        order_dict['time'] = str(item["deal_time"])
+        # status
         order_dict['statue'] = int(item["pay"])
-        data_dict["%03d"%int(item["id"])] = order_dict
+        # userid
+        data_arr.append(order_dict)
         order_dict = {}
     return_dict['length'] = int(count)
-    return_dict['data'] = data_dict
+    return_dict['data'] = data_arr
     print return_dict
     return return_dict
 
@@ -273,10 +282,12 @@ def Main_list():
 
 
 def Order_function(user_id):
-   # 从cookie获取user_idf
-    goods_dict = {} #  商品dict
-    order_dict = {} # 每条订单dict
-    return_dict = {} # 最终返回的dict
+    #  商品dict
+    goods_dict = {} 
+    # 每条订单dict
+    order_dict = {} 
+    # 最终返回的dict
+    return_dict = {} 
     sqlstr = "SELECT id, sum,deal_time,good_id, goods_name, goods_num FROM order_table WHERE user_id = '%s' " %(user_id)
     count = cur.execute(sqlstr)
     result = cur.fetchall()
@@ -284,38 +295,56 @@ def Order_function(user_id):
         pass
     else:
         for item in result:
-            goods_dict[int(item[3])]=[str(item[4]),int(item[5])]
+            goods_dict[int(item["good_id"])]=[str(item["goods_name"]),int(item["goods_num"])]
             order_dict['sum'] = int(item[1])
             order_dict['time'] = str(item[2])
             order_dict['goods']  = goods_dict
-            return_dict[int(item[0])] = order_dict
+            return_dict[int(item["id"])] = order_dict
             goods_dict = {}
             order_dict = {}
         print return_dict
 
+def Order_del_function(order_id):
+    try:
+        sqlstr = "DELETE FROM order_table WHERE id = %s" %int(order_id)   
+        cur.execute(sqlstr)
+        conn.commit()
+        print 'result : 1'
+        return 1
+    except:
+        print 'result : 0'
+        return 0
 
-# 生成订单，成功返回int 1， 失败返回 int 2
+# generate order
 def Purchase_function(good_id, num, user_id):
     try:
-         sqlstr = "SELECT id,name, price,discount FROM goods_table WHERE id = '%s'" %good_id
-         cur.execute(sqlstr)
-         result = cur.fetchone()
-         price = int(result[2])
-         sum = price * num
-         now_time = time.strftime('%Y-%m-%d-%H:%M',time.localtime(time.time()))
-         sqlstr = "INSERT INTO order_table(user_id, good_id, goods_name, goods_num, sum, deal_time) VALUES('%s', %s, '%s', %s, %s, '%s')" %(user_id, good_id, str(result[1]), num, sum, now_time)
-         cur.execute(sqlstr)
-         conn.commit()
-         print "Order ok ..."
-         return 1
+        sqlstr = "SELECT id,name, price,discount FROM goods_table WHERE id = '%s'" %str(good_id)
+        cur.execute(sqlstr)
+        result = cur.fetchone()
+        print(result)
+        price = int(result["price"])
+        # print("price",price)
+        #sum of money
+        sum1 = price * num
+        # print("sum1",sum1)
+        now_time = time.strftime('%Y-%m-%d-%H:%M',time.localtime(time.time()))
+        # print(now_time)
+        sqlstr = "INSERT INTO order_table(user_id, good_id, goods_name, goods_num, sum, deal_time,pay) VALUES('%s', '%s', '%s', %d, %d, '%s','%d')" %(str(user_id), str(good_id), str(result["name"]), num, sum1, str(now_time),0)
+        print(sqlstr)
+        cur.execute(sqlstr)
+        conn.commit()
+        print "Order ok ..."
+        return 1
     except:
+        print("error")
         return 0
 
 
+
 # 确认支付
-def Purchase_Ctrl_function(order_id):
+def Purchase_commit_function(order_id):
     try:
-        sqlstr = "UPDATE order_table SET pay = 1 WHERE id = %s" %int(order_id)   
+        sqlstr = "UPDATE order_table SET pay = 1 WHERE id = %s and " %int(order_id)   
         cur.execute(sqlstr)
         conn.commit()
         print 'result : 1'
@@ -377,14 +406,6 @@ def Search_function(item):
 
 
 
-# 确认购买时候，还需要确定是为哪一条记录确认购买，参数只有uid不够
-# 库存不足需要说明是哪个货物不足吗？？
-# def Purchasefunction(dict):
-
-
-
-
-
 if __name__ == '__main__':
     # Main_list()
    #  Login_function('123', 'abc123')
@@ -403,4 +424,4 @@ if __name__ == '__main__':
  # Admin_AllGoods_function()
  # Home_function('012')
  # Home_Orderinfo_function(2)
- Purchase_function(2, 3, '002')
+    Purchase_function("3",3,"123")

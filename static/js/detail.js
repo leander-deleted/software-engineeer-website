@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     //自动登录
     //var uid = $.cookie('uid');
-    int();
+    ini();
 
 
 });
