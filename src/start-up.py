@@ -43,8 +43,6 @@ sys.setdefaultencoding('utf-8')
 from tornado.options import define, options
 define("port", default=8000, help="run on the given port", type=int)
 
-
-
 class AdminHandler(tornado.web.RequestHandler):
     def post(self):
         type=self.get_argument('type')
@@ -83,9 +81,22 @@ class AdminHandler(tornado.web.RequestHandler):
             self.render('admin.html')
 
 
+class BlogDetailHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render('blog-details.html')
+
+
 class CartHandler(tornado.web.RequestHandler):
     def get(self):
         self.render('cart.html')
+
+
+class ContactHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render('contact-us.html')
+
+
+
 
 
 
@@ -152,7 +163,6 @@ class MainHandler(tornado.web.RequestHandler):
             self.render('home.html',username=username,flag=True)
 
 
-
 class OffHandler(tornado.web.RequestHandler):
     def get(self):
         goods_dict_return = Base_SQL.Main_list()
@@ -166,14 +176,15 @@ class OrderHandler(tornado.web.RequestHandler):
          self.write(order_dict_return)
 
 
-
 class ProfileHandler(tornado.web.RequestHandler):
+  
     def get(self):
         #验证身份
         user_id = self.get_cookie('cookie')
         user_dict = Base_SQL.Home_Userinfo_function(user_id)
         order_dict = Base_SQL.Home_Orderinfo_function(user_id)
         self.render('profile.html',username=user_dict['account'],addr=user_dict['addr'],tel=user_dict['tel'],length=order_dict['length'],data=order_dict['data'])
+
     def post(self):
         #不支持
         self.write('1')
@@ -254,8 +265,6 @@ class RegisterHandler(tornado.web.RequestHandler):
         self.render('login.html')
 
 
-
-
 class SearchHandler(tornado.web.RequestHandler):
     def get(self):
         user_id = self.get_cookie('cookie')
@@ -263,9 +272,6 @@ class SearchHandler(tornado.web.RequestHandler):
         item = self.get_argument('word')
         goods_dict_return = Base_SQL.Search_function(item)
         self.render("search-result.html",length = goods_dict_return['length'], data=goods_dict_return['data'],username=username )
-
-
-
 
 
 if __name__ == "__main__":
@@ -280,9 +286,11 @@ if __name__ == "__main__":
                                             (r"/admin", AdminHandler),
                                             (r"/logoff",LogoffHandler),
                                             (r"/search",SearchHandler),
-                                            # url regex must be start with /
+                                            # url regex must start with /
                                             (r'/purchase',PurchaseHandler),
-                                            (r'/orderctrl',PurchaseCtrlHandler)
+                                            (r'/orderctrl',PurchaseCtrlHandler),
+                                            (r'/contact-us',ContactHandler),
+                                            (r'/blog-details',BlogDetailHandler)
                                             ],
                                   static_path=os.path.join(os.path.dirname(__file__), "../static"),
                                   template_path=os.path.join(os.path.dirname(__file__), "../template"),

@@ -1,12 +1,19 @@
+<!--
+
+import css file 1
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
 		<title>ChinaZ</title>
         <!-- ALL STYLESHEET -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/font-awesome.min.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
-		<link href="css/style2.css" rel="stylesheet">
+        <!--path of css file must be written from static direcotry-->
+        <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!--1-->
+		<link href="static/css/font-awesome.min.css" rel="stylesheet">
+		<link href="static/css/style.css" rel="stylesheet">
+		<link href="static/css/style2.css" rel="stylesheet">
 		<!--link href="css/blog-single.css" rel="stylesheet">
 		<link href="css/responsive.css" rel="stylesheet"-->
     </head>   
@@ -103,16 +110,16 @@
 										</li>
 										<li><a href="product-detail.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a><span class="label label-danger text-center hidden-xs">New <i class="fa fa-caret-right"></i></span>
 											<ul class="dropdown-menu">
-												<li><a href="product.html">Products</a></li>
-												<li><a href="product-detail.html">Product Details</a></li>
-												<li><a href="new-product.html">New Products</a></li>
+												<li><a href="/">Products</a></li>
+												<li><a href="/">Product Details</a></li>
+												<li><a href="/">New Products</a></li>
 											</ul>	
 										</li>
-										<li><a href="faq.html">FAQ</a></li>
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="blog-details.html">Blog Detail</a></li>
-										<li><a href="about-us.html">About Us</a> <span class="label label-info text-center hidden-xs">New <i class="fa fa-caret-right"></i></span></li>
-										<li class="active"><a href="contact-us.html">Contac Us</a></li>
+										<li><a href="/">FAQ</a></li>
+										<li><a href="/">Blog</a></li>
+										<li><a href="/">Blog Detail</a></li>
+										<li><a href="/">About Us</a> <span class="label label-info text-center hidden-xs">New <i class="fa fa-caret-right"></i></span></li>
+										<li class="active"><a href="/">Contac Us</a></li>
 									</ul>
 									<form class="navbar-form navbar-right" role="search">
 										<div class="form-group">
@@ -153,9 +160,9 @@
 						<div class="thumbnail">
 							<img src="images/dhaka-2.jpg" alt="">
 							<div class="caption text-center">
-								<h4>Meldonya</h4>
-								<strong>Pakistan</strong>
-								<p>Nam apeirian assentior utquo eros posse verterem. Cum error congue saperet wisi mollis facilis.</p>
+								<h4>客服1</h4>
+								<strong>中文</strong>
+								<p>中文客服真诚地为您服务</p>
 							</div>
 						</div>
 					</div>
@@ -163,9 +170,9 @@
 						<div class="thumbnail">
 							<img src="images/dhaka-2.jpg" alt="">
 							<div class="caption text-center">
-								<h4>Meldonya</h4>
-								<strong>Pakistan</strong>
-								<p>Nam apeirian assentior utquo eros posse verterem. Cum error congue saperet wisi mollis facilis.</p>
+								<h4>Sam</h4>
+								<strong>United States</strong>
+								<p>English consultant provide service for you sincerely</p>
 							</div>
 						</div>
 					</div>
@@ -173,9 +180,9 @@
 						<div class="thumbnail">
 							<img src="images/dhaka-2.jpg" alt="">
 							<div class="caption text-center">
-								<h4>Meldonya</h4>
-								<strong>Pakistan</strong>
-								<p>Nam apeirian assentior utquo eros posse verterem. Cum error congue saperet wisi mollis facilis.</p>
+								<h4>小沢マリア</h4>
+								<strong>日本</strong>
+								<p>コンサルタントが誠実にサービスを提供する</p>
 							</div>
 						</div>
 					</div>
@@ -183,19 +190,18 @@
 						<div class="thumbnail">
 							<img src="images/dhaka-2.jpg" alt="">
 							<div class="caption text-center">
-								<h4>Meldonya</h4>
-								<strong>Pakistan</strong>
-								<p>Nam apeirian assentior utquo eros posse verterem. Cum error congue saperet wisi mollis facilis.</p>
+								<h4>Hamson</h4>
+								<strong>Français</strong>
+								<p>Fournir un service pour vous sincèrement</p>
 							</div>
 						</div>
 					</div>
 				</div>	
-				<div class="row big-map">
+				<!-- <div class="row big-map">
 					<div class="col-sm-12">
-						<!-- google map -->
-						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233667.82239186848!2d90.279237521418!3d23.78088745652823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka+1000-1200!5e0!3m2!1sen!2sbd!4v1452580729106" width="100%" height="320" allowfullscreen></iframe>
+						
 					</div>
-				</div>	
+				</div>	 -->
 				<div class="row">
 					<div class="col-sm-6">
 						<h2 class="t-color-6">Get In Touch</h2>
@@ -481,8 +487,8 @@
 		</footer>
 			
         <!-- ALL JAVASCRIPT -->         
-        <script src="js/jquery.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="static/js/jquery.js"></script>
+        <script src="static/bootstrap/js/bootstrap.min.js"></script>
+        <script src="static/js/custom.js"></script>
     </body>
 </html>

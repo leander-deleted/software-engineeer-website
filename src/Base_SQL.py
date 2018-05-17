@@ -344,7 +344,8 @@ def Purchase_function(good_id, num, user_id):
 # 确认支付
 def Purchase_commit_function(order_id):
     try:
-        sqlstr = "UPDATE order_table SET pay = 1 WHERE id = %s and " %int(order_id)   
+        sqlstr = "UPDATE order_table SET pay = 1 WHERE id = %d " %int(order_id) 
+        print(sqlstr)  
         cur.execute(sqlstr)
         conn.commit()
         print 'result : 1'
