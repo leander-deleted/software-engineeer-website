@@ -34,13 +34,13 @@ def Admin_Order_function():
     count = cur.execute(sqlstr)
     result = cur.fetchall()
     for item in result:
-        order_dict['uid'] = str(item[1])
-        order_dict['name'] = str(item[2])
-        order_dict['num'] = int(item[3])
-        order_dict['sum']= int(item[4])
-        order_dict['time'] = str(item[5])
-        order_dict['statue'] = int(item[6])
-        order_id = "%03d"%int(item[0])
+        order_dict['uid'] = str(item["id"])
+        order_dict['name'] = str(item["goods_name"])
+        order_dict['num'] = int(item["goods_num"])
+        order_dict['sum']= int(item["sum"])
+        order_dict['time'] = str(item["deal_time"])
+        order_dict['statue'] = int(item["pay"])
+        order_id = "%03d"%int(item["id"])
         data_dict[order_id] = order_dict
         order_dict = {}
     return_dict['length'] = int(count)
@@ -51,16 +51,17 @@ def Admin_Order_function():
 
 def Admin_Allusers_function():
     return_dict = {}
+    #dictionary of storing data
     data_dict = {}
     user_dict = {}
     sqlstr = "SELECT id, account, password, addr, tel FROM user_table  ORDER BY id"
     count = cur.execute(sqlstr)
     result = cur.fetchall()
     for item in result:
-        user_id = "%03d"%int(item[0])
-        user_dict['account'] = str(item[1])
-        user_dict['addr'] = str(item[3])
-        user_dict['tel'] = str(item[4])
+        user_id = "%03d"%int(item["id"])
+        user_dict['account'] = str(item["account"])
+        user_dict['addr'] = str(item["addr"])
+        user_dict['tel'] = str(item["tel"])
         data_dict[user_id] = user_dict
         user_dict = {}
     return_dict['length'] = int(count)
@@ -77,11 +78,11 @@ def Admin_AllGoods_function():
     count = cur.execute(sqlstr)
     result = cur.fetchall()
     for item in result:
-        good_id = "%03d"%int(item[0])
-        good_dict['name'] = str(item[1])
-        good_dict['type'] = str(item[2])
-        good_dict['price'] = int(item[3])
-        good_dict['off'] = int(item[4])
+        good_id = "%03d"%int(item["id"])
+        good_dict['name'] = str(item["name"])
+        good_dict['type'] = str(item["kind"])
+        good_dict['price'] = int(item["price"])
+        good_dict['off'] = int(item["discount"])
         data_dict[good_id] = good_dict
         good_dict = {}
     return_dict['length'] = int(count)
@@ -92,10 +93,11 @@ def Admin_AllGoods_function():
 # 修改商品价格
 def  Admin_Modify_Price_function(good_id, price):
     try:
-        sqlstr = "UPDATE goods_table SET price = %s" %price
+        # in sql, %s: if doesn't enclose it with " ", the value is treated as int; if enclosed by "", the value is varchar
+        sqlstr = "UPDATE goods_table SET price = %s where id=%s" %(price,good_id)
         cur.execute(sqlstr)
         conn.commit()
-        print 'result : 1'
+        print 'modify price function result : 1'
         return 1
     except:
         print 'result : 0'
@@ -105,7 +107,7 @@ def  Admin_Modify_Price_function(good_id, price):
 # 修改商品折扣
 def Admin_Modify_Discount_function(good_id, re_discount):
     try:
-        sqlstr = "UPDATE goods_table SET discount = %s" %re_discount
+        sqlstr = "UPDATE goods_table SET discount = %s where id=%s" %(re_discount,good_id)
         cur.execute(sqlstr)
         conn.commit()
         print 'result : 1'

@@ -1,4 +1,14 @@
-﻿$(document).ready(function () {
+﻿/*
+
+datatable 1
+    data 1-1
+    pageLength 1-2
+
+
+*/
+
+
+$(document).ready(function () {
     show('user');
 });
 
@@ -12,7 +22,9 @@ function show(type) {
             var j = 0
             for (var i in data['data']) {
                 dt[j] = [];
+                //i: user_id
                 dt[j].push(i);
+                //account: user_name
                 dt[j].push(data['data'][i]['account']);
                 dt[j].push(data['data'][i]['addr']);
                 dt[j].push(data['data'][i]['tel']);
@@ -21,11 +33,12 @@ function show(type) {
                 j++;
             }
             //$('#datatable1').html(thead);
-            var t = $('#datatable1').dataTable({
-                "data": dt,
+            var t = $('#datatable1').dataTable({ //1
+                // data: data of datatable, [[],[],[],...], the order of elements obey the order of th of <thead>
+                "data": dt, //1-1
                 "sPaginationType": "full_numbers",
                 "destroy":true,
-                "pageLength": 20,
+                "pageLength": 20,//1-2
                 "lengthMenu": [
                             [20, -1],
                             [20, "All"]
@@ -45,7 +58,9 @@ function show(type) {
             var j = 0
             for (var i in data['data']) {
                 dt[j] = [];
+                //i: goods_id
                 dt[j].push(i);
+                //name: goods_name
                 dt[j].push(data['data'][i]['name']);
                 dt[j].push(data['data'][i]['type']);
                 dt[j].push(data['data'][i]['price']);
@@ -76,9 +91,10 @@ function show(type) {
             var j = 0
             for (var i in data['data']) {
                 dt[j] = [];
+                // i: order_id
                 dt[j].push(i);
+                //user_id
                 dt[j].push(data['data'][i]['uid']);
-                dt[j].push(data['data'][i]['id']);
                 dt[j].push(data['data'][i]['name']);
                 dt[j].push(data['data'][i]['num']); 
                 dt[j].push(data['data'][i]['sum']);

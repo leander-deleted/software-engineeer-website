@@ -45,6 +45,7 @@ define("port", default=8000, help="run on the given port", type=int)
 
 class AdminHandler(tornado.web.RequestHandler):
     def post(self):
+        # 'type','id','price': the attribute of the post dictionary
         type=self.get_argument('type')
         id=self.get_argument('id')
         # 这个id在相应情况下是用户号和订单号
@@ -52,7 +53,7 @@ class AdminHandler(tornado.web.RequestHandler):
             Base_SQL.Admin_Del_User_function(id)
         elif type=='delorder':
             # 删除订单;result为1,修改成功;为0,则修改失败,result为int
-            Base_SQL.Admin_Del_Order_function(order_id)
+            Base_SQL.Admin_Del_Order_function(id)
         elif type=='changeprice':
             # 修改商品价格;result为1,修改成功;为0,则修改失败,result为int
             price=self.get_argument('price')
@@ -77,7 +78,9 @@ class AdminHandler(tornado.web.RequestHandler):
             elif type == 'goods':
                 # 管理员查看所有商品
                 All_goods = Base_SQL.Admin_AllGoods_function()
+                self.write(All_goods)
         except:
+        # Orders = Base_SQL.Admin_Order_function()
             self.render('admin.html')
 
 
@@ -155,6 +158,7 @@ class LogoffHandler(tornado.web.RequestHandler):
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         user_id = self.get_cookie("cookie")
+        print(user_id)
         if(not user_id):
             self.redirect("/login")
         else:
